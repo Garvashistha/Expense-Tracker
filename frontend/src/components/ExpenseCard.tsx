@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Calendar, Tag, Trash2 } from 'lucide-react';
-import { Expense } from '@/types/expense';
-import { useExpenses } from '@/context/ExpenseContext';
+import { Expense } from "../types/expense";
+import { useExpenses } from "../context/ExpenseContext";
 
 interface ExpenseCardProps {
   expense: Expense;

@@ -1,21 +1,25 @@
-import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Button } from "../components/ui/button";
 
-export default function Navbar() {
+const NotFound = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+  }, [location.pathname]);
+
   return (
-    <AppBar position="fixed" sx={{ zIndex: 1201, bgcolor: "#1976d2" }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Expense Tracker
-        </Typography>
-        <IconButton color="inherit">
-          <AccountCircle />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="text-center space-y-4">
+        <h1 className="text-6xl font-bold text-primary">404</h1>
+        <p className="text-xl text-muted-foreground">Oops! Page not found</p>
+        <Button asChild variant="default" className="mt-6">
+          <a href="/">Return to Home</a>
+        </Button>
+      </div>
+    </div>
   );
-}
+};
+
+export default NotFound;

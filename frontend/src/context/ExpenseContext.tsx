@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Expense, ExpenseStats } from '@/types/expense';
+import { Expense, ExpenseStats } from "../types/expense";
 
 interface ExpenseContextType {
   expenses: Expense[];

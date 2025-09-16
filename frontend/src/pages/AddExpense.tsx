@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, Calendar as CalendarIcon } from 'lucide-react';
-import { useExpenses } from '@/context/ExpenseContext';
-import { EXPENSE_CATEGORIES, ExpenseCategory } from '@/types/expense';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useExpenses } from "../context/ExpenseContext";
+import { EXPENSE_CATEGORIES, ExpenseCategory } from "../types/expense";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import { Textarea } from "../components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 
 export default function AddExpense() {
   const navigate = useNavigate();
