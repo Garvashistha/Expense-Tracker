@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Calendar, Tag, Trash2 } from 'lucide-react';
-import { Expense } from "../types/expense";
-import { useExpenses } from "../context/ExpenseContext";
+import { Expense } from '@/types/expense';
+import { useExpenses } from '@/context/ExpenseContext';
 
 interface ExpenseCardProps {
   expense: Expense;
@@ -27,7 +27,7 @@ export function ExpenseCard({ expense, index = 0 }: ExpenseCardProps) {
         <h3 className="font-semibold text-foreground">{expense.title}</h3>
         <div className="flex items-center space-x-2">
           <span className="text-2xl font-bold text-primary">
-            ${expense.amount.toFixed(2)}
+            ₹{expense.amount.toFixed(2)}
           </span>
           <button
             onClick={handleDelete}

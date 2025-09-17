@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useState, useMemo } from 'react';
 import { Search, Filter, Calendar, Tag, DollarSign } from 'lucide-react';
-import { useExpenses } from "../context/ExpenseContext";
-import { ExpenseCard } from "../components/ExpenseCard";
-import { Input } from "../components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
-import { EXPENSE_CATEGORIES } from "../types/expense";
+import { useExpenses } from '@/context/ExpenseContext';
+import { ExpenseCard } from '@/components/ExpenseCard';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { EXPENSE_CATEGORIES } from '@/types/expense';
 
 export default function Transactions() {
   const { expenses } = useExpenses();
@@ -62,7 +62,7 @@ export default function Transactions() {
         </div>
         <div className="text-right">
           <p className="text-sm text-muted-foreground">Total Amount</p>
-          <p className="text-2xl font-bold text-primary">${totalAmount.toFixed(2)}</p>
+          <p className="text-2xl font-bold text-primary">₹{totalAmount.toFixed(2)}</p>
         </div>
       </div>
 

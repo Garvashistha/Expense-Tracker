@@ -29,7 +29,7 @@ export function ExpenseChart({ data, type = 'pie' }: ExpenseChartProps) {
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Tooltip formatter={(value: number) => [`$${value.toFixed(2)}`, 'Amount']} />
+          <Tooltip formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']} />
         </PieChart>
       </ResponsiveContainer>
     );
@@ -42,7 +42,7 @@ export function ExpenseChart({ data, type = 'pie' }: ExpenseChartProps) {
         <XAxis dataKey="name" tick={{ fill: '#888' }} />
         <YAxis tick={{ fill: '#888' }} />
         <Tooltip 
-          formatter={(value: number) => [`$${value.toFixed(2)}`, 'Amount']}
+          formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']}
           contentStyle={{ 
             backgroundColor: 'rgba(15, 15, 15, 0.8)', 
             border: '1px solid rgba(255, 255, 255, 0.2)',

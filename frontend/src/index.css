@@ -2,8 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark red gradient for a professional look */
-body {
-  @apply bg-gradient-to-r from-red-900 via-red-800 to-black text-white;
-  font-family: 'Inter', sans-serif;
+/* Dark-first Expense Tracker Design System
+   Netflix-red (#e50914) primary + glassmorphism + neo-brutalist
+*/
+
+@layer base {
+  :root {
+    /* Dark theme base */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    
+    /* Glass cards */
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --glass: 0 0% 15% / 0.8;
+    --glass-border: 0 0% 25% / 0.2;
+    
+    /* Netflix Red Primary */
+    --primary: 355 85% 45%; /* #e50914 Netflix red */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 355 85% 60%;
+    
+    /* Secondary grays */
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 90%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    
+    --accent: 0 0% 18%;
+    --accent-foreground: 0 0% 95%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & inputs */
+    --border: 0 0% 25% / 0.3;
+    --input: 0 0% 18%;
+    --ring: 355 85% 45%;
+    
+    --radius: 1rem;
+    
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass)), hsl(0 0% 20% / 0.4));
+    --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(0 0% 5%));
+    
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
+    --shadow-primary: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(0 0% 5%));
+    min-height: 100vh;
+  }
+  
+  /* Glassmorphism utilities */
+  .glass {
+    background: hsl(var(--glass));
+    border: 1px solid hsl(var(--glass-border));
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl;
+  }
+  
+  /* Primary glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+  
+  .glow-intense {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Smooth transitions */
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
