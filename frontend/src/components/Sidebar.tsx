@@ -23,10 +23,10 @@ export function Sidebar() {
   return (
     <motion.aside 
       animate={{ width: isCollapsed ? 80 : 280 }}
-      className="glass-card h-screen sticky top-0 z-50 border-r border-border/50"
+      className="glass-card h-screen flex flex-col z-50 border-r border-border/50"
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="p-6">
+      <div className="p-6 flex-1 overflow-y-auto overflow-x-hidden">
         <div className="flex items-center justify-between mb-8">
           {!isCollapsed && (
             <motion.div
