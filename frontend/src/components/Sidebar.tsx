@@ -6,9 +6,13 @@ import {
   CreditCard, 
   BarChart3, 
   Menu,
-  X
+  X,
+  LogOut,
+  User
 } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
@@ -19,6 +23,7 @@ const navItems = [
 
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <motion.aside 
@@ -50,7 +55,30 @@ export function Sidebar() {
           </button>
         </div>
 
-        <nav className="space-y-2">
+        {/* User info */}
+        {!isCollapsed && user && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mb-6 p-3 glass rounded-lg"
+          >
+            <div className="flex items-center space-x-3">
+              <div className="p-2 bg-gradient-primary rounded-full">
+                <User className="h-4 w-4 text-primary-foreground" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-foreground truncate">
+                  {user.name}
+                </p>
+                <p className="text-xs text-muted-foreground truncate">
+                  {user.email}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        <nav className="space-y-2 flex-1">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -76,6 +104,28 @@ export function Sidebar() {
             </NavLink>
           ))}
         </nav>
+
+        {/* Logout button */}
+        <div className="mt-auto pt-4 border-t border-border/50">
+          <Button
+            onClick={logout}
+            variant="ghost"
+            className={`w-full justify-start text-muted-foreground hover:text-foreground hover:bg-accent/50 ${
+              isCollapsed ? 'px-3' : 'px-4'
+            }`}
+          >
+            <LogOut className="h-5 w-5" />
+            {!isCollapsed && (
+              <motion.span
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="ml-3"
+              >
+                Logout
+              </motion.span>
+            )}
+          </Button>
+        </div>
       </div>
     </motion.aside>
   );

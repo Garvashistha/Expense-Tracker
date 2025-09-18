@@ -5,11 +5,20 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // 👇 IMPORTANT: Must match your repo name on GitHub exactly (case-sensitive)
+  base: "/Expense-Tracker/",
+
   server: {
-    host: "::",
+    host: "0.0.0.0", // makes it accessible in LAN (safer than "::")
     port: 8080,
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+
+  plugins: [
+    react(),
+    // Enable lovable-tagger only in development mode
+    mode === "development" && componentTagger(),
+  ].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
