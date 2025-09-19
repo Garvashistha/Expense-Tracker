@@ -4,10 +4,20 @@ import { TrendingUp, PieChart, BarChart, Calendar } from 'lucide-react';
 import { useExpenses } from '@/context/ExpenseContext';
 import { ExpenseChart } from '@/components/ExpenseChart';
 import { StatsCard } from '@/components/StatsCard';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function Analytics() {
   const { expenses, getExpenseStats } = useExpenses();
+  const { theme } = useTheme();
   const stats = getExpenseStats();
+  
+  // Dynamic colors for category legend based on theme
+  const getCategoryColor = (index: number) => {
+    const darkColors = ['#e50914', '#ff4757', '#ff6b6b', '#ff7979', '#fd79a8', '#fdcb6e', '#6c5ce7', '#74b9ff'];
+    const lightColors = ['#3b82f6', '#06b6d4', '#10b981', '#22c55e', '#84cc16', '#eab308', '#f59e0b', '#ef4444'];
+    const colors = theme === 'dark' ? darkColors : lightColors;
+    return colors[index % colors.length];
+  };
 
   const chartData = useMemo(() => {
     return Object.entries(stats.categorySums)
@@ -95,7 +105,7 @@ export default function Analytics() {
                 <div className="flex items-center">
                   <div 
                     className="w-3 h-3 rounded-full mr-2" 
-                    style={{ backgroundColor: `hsl(${355 + index * 30}, 85%, ${45 + index * 5}%)` }}
+                    style={{ backgroundColor: getCategoryColor(index) }}
                   />
                   <span className="text-foreground">{item.name}</span>
                 </div>

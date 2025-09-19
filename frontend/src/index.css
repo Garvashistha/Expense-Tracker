@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Dark-first Expense Tracker Design System
-   Netflix-red (#e50914) primary + glassmorphism + neo-brutalist
+Netflix-red (#e50914) primary + glassmorphism + neo-brutalist
 */
 
 @layer base {
@@ -52,6 +52,69 @@
     --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
     --shadow-primary: 0 0 30px hsl(var(--primary) / 0.3);
     --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.4);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light theme - Beautiful Blue & Green Professional */
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 210 40% 15%;
+    
+    /* Glass cards */
+    --card: 210 40% 96%;
+    --card-foreground: 210 40% 15%;
+    --glass: 210 40% 100% / 0.8;
+    --glass-border: 210 40% 85% / 0.5;
+    
+    /* Beautiful Blue Primary with Green Accents */
+    --primary: 210 85% 55%; /* Beautiful blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 85% 70%;
+    
+    /* Green secondary for accent */
+    --secondary: 150 60% 45%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 210 40% 92%;
+    --muted-foreground: 210 40% 40%;
+    
+    --accent: 210 40% 90%;
+    --accent-foreground: 210 40% 20%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & inputs */
+    --border: 210 40% 85% / 0.6;
+    --input: 210 40% 94%;
+    --ring: 210 85% 55%;
+    
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass)), hsl(210 40% 95% / 0.6));
+    --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(210 40% 95%));
+    
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(210 40% 20% / 0.1);
+    --shadow-primary: 0 0 30px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.3);
+
+    --sidebar-background: 210 40% 99%;
+    --sidebar-foreground: 210 40% 20%;
+    --sidebar-primary: 210 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 210 40% 25%;
+    --sidebar-border: 210 40% 90%;
+    --sidebar-ring: 210 85% 55%;
   }
 }
 

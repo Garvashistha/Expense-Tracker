@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { FloatingActionButton } from './FloatingActionButton';
+import { ThemeToggle } from './ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="flex h-screen bg-gradient-dark">
+      <ThemeToggle />
       <Sidebar />
       <motion.main 
         initial={{ opacity: 0, y: 20 }}

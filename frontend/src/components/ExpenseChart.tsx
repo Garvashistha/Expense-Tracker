@@ -1,4 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { useTheme } from './context/ThemeContext';
 
 interface ExpenseChartProps {
   data: Array<{
@@ -8,9 +9,13 @@ interface ExpenseChartProps {
   type?: 'pie' | 'bar';
 }
 
-const COLORS = ['#e50914', '#ff4757', '#ff6b6b', '#ff7979', '#fd79a8', '#fdcb6e', '#6c5ce7', '#74b9ff'];
-
 export function ExpenseChart({ data, type = 'pie' }: ExpenseChartProps) {
+  const { theme } = useTheme();
+  
+  // Dynamic colors based on theme
+  const COLORS = theme === 'dark' 
+    ? ['#e50914', '#ff4757', '#ff6b6b', '#ff7979', '#fd79a8', '#fdcb6e', '#6c5ce7', '#74b9ff']
+    : ['#3b82f6', '#06b6d4', '#10b981', '#22c55e', '#84cc16', '#eab308', '#f59e0b', '#ef4444'];
   if (type === 'pie') {
     return (
       <ResponsiveContainer width="100%" height={300}>
@@ -38,18 +43,27 @@ export function ExpenseChart({ data, type = 'pie' }: ExpenseChartProps) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-        <XAxis dataKey="name" tick={{ fill: '#888' }} />
-        <YAxis tick={{ fill: '#888' }} />
+        <CartesianGrid 
+          strokeDasharray="3 3" 
+          stroke={theme === 'dark' ? '#333' : '#e5e7eb'} 
+        />
+        <XAxis 
+          dataKey="name" 
+          tick={{ fill: theme === 'dark' ? '#888' : '#6b7280' }} 
+        />
+        <YAxis 
+          tick={{ fill: theme === 'dark' ? '#888' : '#6b7280' }} 
+        />
         <Tooltip 
           formatter={(value: number) => [`₹${value.toFixed(2)}`, 'Amount']}
           contentStyle={{ 
-            backgroundColor: 'rgba(15, 15, 15, 0.8)', 
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            borderRadius: '8px'
+            backgroundColor: theme === 'dark' ? 'rgba(15, 15, 15, 0.8)' : 'rgba(255, 255, 255, 0.95)', 
+            border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.1)',
+            borderRadius: '8px',
+            color: theme === 'dark' ? '#fff' : '#000'
           }}
         />
-        <Bar dataKey="value" fill="#e50914" />
+        <Bar dataKey="value" fill={COLORS[0]} />
       </BarChart>
     </ResponsiveContainer>
   );
