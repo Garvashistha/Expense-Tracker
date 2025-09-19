@@ -4,7 +4,7 @@ import { TrendingUp, PieChart, BarChart, Calendar } from 'lucide-react';
 import { useExpenses } from '@/context/ExpenseContext';
 import { ExpenseChart } from '@/components/ExpenseChart';
 import { StatsCard } from '@/components/StatsCard';
-import { useTheme } from '@/context/ThemeContext';
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Analytics() {
   const { expenses, getExpenseStats } = useExpenses();

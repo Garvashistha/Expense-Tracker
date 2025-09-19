@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Wallet } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -43,6 +44,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-dark flex items-center justify-center p-6">
+      <ThemeToggle />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

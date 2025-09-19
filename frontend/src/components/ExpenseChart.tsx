@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import { useTheme } from './context/ThemeContext';
+import { useTheme } from "@/context/ThemeContext";
 
 interface ExpenseChartProps {
   data: Array<{
