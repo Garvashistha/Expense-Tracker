@@ -25,7 +25,7 @@ const App = () => (
           <ExpenseProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter basename="/Expense-Tracker">
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/" element={
